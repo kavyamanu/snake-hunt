@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Board } from "../src/board/Board";
+import { Score } from "../src/score/Score";
+import "./App.css";
+import { useState, useEffect, useCallback } from "react";
+import classNames from "classnames";
 
 function App() {
+  const [isOut, setIsOut] = useState(false);
+  const page = classNames({ App: !isOut }, { "game-end": isOut });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="title">Snake Hunt</div>
+      <div className={page}>
+        {!isOut &&
+          <Board onGameOver={() => setIsOut(true)} />}
+        <Score
+          isOut={isOut}
+          onGameStart={() => {
+            setIsOut(false);
+          }}
+        />
+      </div>
+    </>
   );
 }
 

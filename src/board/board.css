@@ -1,0 +1,36 @@
+.border {
+  border: 1px solid whitesmoke;
+  margin: 20px 0px 0px 100px;
+  height: 70vh;
+  width: 40vw;
+  box-shadow: 0 0 20px rgb(240, 243, 49);
+  border-radius: 4px;
+}
+.cell {
+  border: 0.5px solid rgb(224, 222, 222);
+  height: 7vh;
+  display: flex;
+  flex-direction: column;
+  width: 5vw;
+  border-radius: 4px;
+}
+.row {
+  height: 7vh;
+  display: flex;
+  flex-direction: row;
+}
+.snake {
+  background-color: teal;
+  box-shadow: 0 0 10px white;
+}
+.out {
+  font-size: 8vh;
+  font-family: "New Tegomin", serif;
+  text-shadow: 2px 2px 1px white;
+  height: 10vh;
+}
+.repeat{
+    font-size: 6vh;
+    text-shadow: 1px 1px 1px rgb(219, 216, 216);
+
+}
