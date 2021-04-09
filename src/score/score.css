@@ -1,11 +1,10 @@
 .score {
   border: 1px solid whitesmoke;
-  height: 30vh;
-  width: 20vw;
-  margin: 150px 0px 0px 180px;
+  width: 10rem;
   box-shadow: 0 0 10px whitesmoke;
   border-radius: 6px;
 }
+
 .result {
   font-size: 24px;
   margin-bottom: 8vh;
@@ -22,4 +21,14 @@ p {
   color: whitesmoke;
   text-shadow: 1.5px 1.5px 1.5px black;
   line-height: 5vh;
+}
+.out {
+  font-size: 8vh;
+  text-shadow: 2px 2px 1px white;
+  height: 10vh;
+}
+
+.repeat {
+  font-size: 6vh;
+  text-shadow: 1px 1px 1px rgb(219, 216, 216);
 }

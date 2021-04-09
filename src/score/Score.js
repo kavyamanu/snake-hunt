@@ -1,23 +1,24 @@
-import "./snake.css";
+import "./score.css";
 import { useState, useEffect } from "react";
 
-export function Score({ isOut, onGameStart }) {
-  const [score, setScore] = useState(0);
+export function Score({ isOut, onGameStart, score }) {
   const [bestScore, setBestScore] = useState(0);
-  const finalScore = score;
-  useEffect(() => {
-    const scoreInterval = setInterval(() => {
-      if (!isOut) {
-        setScore((score) => score + 1);
-      } else {
-        setScore((score) => score);
-      }
-    }, 1000);
+  const [finalScore, setFinalScore] = useState(0);
 
-    return () => {
-      clearInterval(scoreInterval);
-    };
-  }, []);
+  useEffect(() => {
+    const finalScoreInterval = setInterval(() => {
+      if (!isOut) {
+        setFinalScore((finalScore) => finalScore + 1);
+        setBestScore((bestScore) => {
+          if (finalScore > bestScore) {
+            return finalScore;
+          }
+          return bestScore;
+        });
+      } 
+    }, 1000);
+    return () => clearInterval(finalScoreInterval);
+  }, [finalScore]);
 
   return isOut ? (
     <div className="result">
@@ -31,13 +32,15 @@ export function Score({ isOut, onGameStart }) {
       <div className="out">Game Over 😵</div>
     </div>
   ) : (
-    <div className="score">
-      <h2>Score Board</h2>
-      <hr />
-      <p>
-        Score : {score}
-        <br></br> Level : 1<br></br>Best Score: {bestScore}
-      </p>
+    <div>
+      <div className="score">
+        <h2>Score Board</h2>
+        <hr />
+        <p>
+          Score : {score}
+          <br></br> Level : 1<br></br>Best Score: {bestScore}
+        </p>
+      </div>
     </div>
   );
 }
