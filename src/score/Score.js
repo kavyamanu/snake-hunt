@@ -1,7 +1,7 @@
 import "./score.css";
 import { useState, useEffect } from "react";
 
-export function Score({ isOut, score, setIsOut, setScore, level, setLevel }) {
+export function Score({ isOut, score, setIsOut, setScore, level, setLevel, setIntro }) {
   const [bestScore, setBestScore] = useState(0);
 
   useEffect(() => {
@@ -35,6 +35,9 @@ export function Score({ isOut, score, setIsOut, setScore, level, setLevel }) {
       <div className="out">
         <img src="game_over.png" alt="game-over" width="200" height="200" />
         Game Over
+        <a href="#" onClick={() => setIntro(true)}>
+          need help
+        </a>
       </div>
     </div>
   ) : (

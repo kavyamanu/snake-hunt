@@ -21,7 +21,7 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
   const direction = useSnakeDirection();
 
   useEffect(() => {
-    if (score % 29 === 0) {
+    if (score % 101 === 0) {
       setLevel((level) => level + 1);
       setTimer((timer) => timer / 2);
     }
@@ -29,7 +29,13 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
 
   useEffect(() => {
     const [y, x] = snake.head.data;
-    if (x === -1 || y === -1 || x === 15 || y === 15) {
+    if (
+      x === -1 ||
+      y === -1 ||
+      x === 15 ||
+      y === 15 ||
+      snake.isBody(snake.head.data)
+    ) {
       onGameOver();
     }
   });

@@ -43,4 +43,14 @@ export class LinkedList {
     }
     return false;
   }
+  isBody([a,b]) {
+    let node = this.head.next;
+    while (node) {
+      if (a === node.data[0] && b === node.data[1]) {
+        return true;
+      }
+      node = node.next;
+    }
+    return false;
+  }
 }
