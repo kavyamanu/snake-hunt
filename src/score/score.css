@@ -40,10 +40,12 @@ hr{
 
 .repeat {
   font-size: 6vh;
+  cursor: pointer;
   text-shadow: 1px 1px 1px rgb(219, 216, 216);
 }
-a{
+.help{
   font-size: 20px;
+  cursor: pointer;
   color: whitesmoke;
   text-decoration: none;
   text-shadow: 1.5px 1.5px 1.5px black;

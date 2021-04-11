@@ -10,5 +10,6 @@
 }
 .ready {
   font-size: 1.5rem;
+  cursor: pointer;
   text-shadow: 1px 1px 1px rgb(240, 243, 49);
 }

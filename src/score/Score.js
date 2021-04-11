@@ -35,9 +35,9 @@ export function Score({ isOut, score, setIsOut, setScore, level, setLevel, setIn
       <div className="out">
         <img src="game_over.png" alt="game-over" width="200" height="200" />
         Game Over
-        <a href="#" onClick={() => setIntro(true)}>
+        <div className="help" onClick={() => setIntro(true)}>
           need help
-        </a>
+        </div>
       </div>
     </div>
   ) : (
