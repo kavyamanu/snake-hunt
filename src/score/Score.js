@@ -1,35 +1,41 @@
 import "./score.css";
 import { useState, useEffect } from "react";
 
-export function Score({ isOut, onGameStart, score }) {
+export function Score({ isOut, score, setIsOut, setScore, level, setLevel }) {
   const [bestScore, setBestScore] = useState(0);
-  const [finalScore, setFinalScore] = useState(0);
 
   useEffect(() => {
-    const finalScoreInterval = setInterval(() => {
-      if (!isOut) {
-        setFinalScore((finalScore) => finalScore + 1);
-        setBestScore((bestScore) => {
-          if (finalScore > bestScore) {
-            return finalScore;
-          }
-          return bestScore;
-        });
-      } 
-    }, 1000);
-    return () => clearInterval(finalScoreInterval);
-  }, [finalScore]);
+    if (!isOut) {
+      setBestScore((bestScore) => {
+        if (score > bestScore) {
+          return score;
+        }
+        return bestScore;
+      });
+    }
+  }, [score, bestScore, isOut]);
 
   return isOut ? (
     <div className="result">
-      <div className="out repeat" onClick={() => onGameStart()}>
-        Hunt Again 🔁
+      <div
+        className="out repeat"
+        onClick={() => {
+          setIsOut(false);
+          setScore(0);
+          setLevel(0);
+        }}
+      >
+        Hunt Again{" "}
+        <img src="repeat-button.png" alt="repeat" width="40" height="30" />
       </div>
       <p>
-        Your Score : {finalScore}
+        Your Score : {score - 1}
         <br></br>Best Score: {bestScore}
       </p>
-      <div className="out">Game Over 😵</div>
+      <div className="out">
+        <img src="game_over.png" alt="game-over" width="200" height="200" />
+        Game Over
+      </div>
     </div>
   ) : (
     <div>
@@ -38,7 +44,8 @@ export function Score({ isOut, onGameStart, score }) {
         <hr />
         <p>
           Score : {score}
-          <br></br> Level : 1<br></br>Best Score: {bestScore}
+          <br></br> Level : {level}
+          <br></br>Best Score: {bestScore}
         </p>
       </div>
     </div>

@@ -7,73 +7,36 @@ export class Node {
 }
 
 export class LinkedList {
-  constructor(head = null) {
+  constructor(head = null, tail = null) {
     this.head = head;
+    this.tail = tail;
+    this.tail = tail;
   }
-  size() {
-    let counter = 0;
-    let node = this.head;
-    while (node) {
-      counter = counter + 1;
-      node = node.next;
+
+  removeTail() {
+    if (!this.tail) {
+      return;
     }
-    return counter;
+    const node = this.tail;
+    this.tail.prev.next = null;
+    this.tail = node.prev
+    node.prev = null;
   }
-  getLast() {
-    if (!this.head) {
-      return null;
-    }
-    let node = this.head;
-    while (node) {
-      if (!node.next) {
-        return node;
-      }
-      node = node.next;
-    }
-  }
-  removeLast() {
-      if (!this.head) {
-          return;
-      }
-      if (!this.head.next) {
-          this.head = null;
-      }
-      let p = this.head;
-      let n = p.next;
-      while (n.next) {
-          p = n;
-          n = p.next;
-      }
-      p.next = null;
-  }
+
   addToHead(data) {
-    let n = new Node(data);
+    let node = new Node(data, this.head);
     if (!this.head) {
-      this.head = n;
+      this.head = this.tail = node;
     } else {
-      n.next = this.head;
-      this.head = n;
+      this.head.prev = node;
+      this.head = node;
     }
   }
-  addToTail(data) {
-    let count = null;
-    let n = new Node(data);
-    if (!this.head) {
-      this.head = n;
-    } else {
-      count = this.head;
-      while (count.next) {
-        count = count.next;
-      }
-      count.next = n;
-    }
-  }
-  contains(data) {
+
+  contains([a, b]) {
     let node = this.head;
     while (node) {
-      let a = node.data[0];
-      let b = node.data[1];
-      if (a === data[0] && b === data[1]) {
+      if (a === node.data[0] && b === node.data[1]) {
         return true;
       }
       node = node.next;

@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 2rem;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 .game-end {
@@ -22,5 +22,5 @@
   font-style: bold;
   text-shadow: 1px 1px 1px rgb(240, 243, 49);
   text-align: center;
-  margin: 1rem;
+  margin: 1.5rem;
 }

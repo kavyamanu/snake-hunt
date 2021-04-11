@@ -1,0 +1,32 @@
+import { useState, useEffect } from "react";
+
+export function useSnakeDirection() {
+  const [direction, setDirection] = useState("down");
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      switch (event.key) {
+        case "ArrowLeft":
+          setDirection("left");
+          break;
+        case "ArrowUp":
+          setDirection("up");
+          break;
+        case "ArrowRight":
+          setDirection("right");
+          break;
+        case "ArrowDown":
+          setDirection("down");
+          break;
+        default:
+          setDirection("up");
+          break;
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, []);
+  return direction;
+}

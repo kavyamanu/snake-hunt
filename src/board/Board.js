@@ -1,84 +1,73 @@
-import "./board.css";
-import { useState, useEffect, useCallback } from "react";
-import { Node, LinkedList } from "./linkedList";
-import { getRandom } from "../../src/Random";
 import cn from "classnames";
-const MATRIX_SIZE = 15;
+import { useEffect, useState } from "react";
+import { useSnakeDirection } from "../hooks/useSnakeDirection";
+import { isFoodCell, isSnakeCell, getRandomFood, getNewHead } from "../utils";
+import "./board.css";
+import { LinkedList } from "./linkedList";
 
-export function Board({ onGameOver }) {
+export function Board({ onGameOver, setScore, score, setLevel }) {
   let board = [];
+  const MATRIX_SIZE = 15;
+
   const [snake, setSnake] = useState(() => {
-    let node1 = new Node([4, 2]);
-    let node2 = new Node([5, 2]);
-    let node3 = new Node([6, 2]);
-    node1.next = node2;
-    node2.next = node3;
-    let list = new LinkedList();
-    list.head = node1;
+    const list = new LinkedList();
+    list.addToHead([4, 2]);
+    list.addToHead([5, 2]);
+    list.addToHead([6, 2]);
     return list;
   });
+  const [food, setFood] = useState(getRandomFood(snake));
+  const [timer, setTimer] = useState(1500);
+  const direction = useSnakeDirection();
 
-  const [direction, setDirection] = useState("up");
-  document.addEventListener("keydown", (event) => {
-    switch (event.key) {
-      case "ArrowLeft":
-        setDirection("left");
-        break;
-      case "ArrowUp":
-        setDirection("up");
-        break;
-      case "ArrowRight":
-        setDirection("right");
-        break;
-      case "ArrowDown":
-        setDirection("down");
-        break;
-      default:
-        setDirection("up");
-        break;
+  useEffect(() => {
+    if (score % 29 === 0) {
+      setLevel((level) => level + 1);
+      setTimer((timer) => timer / 2);
+    }
+  }, [score, setLevel, setScore]);
+
+  useEffect(() => {
+    const [y, x] = snake.head.data;
+    if (x === -1 || y === -1 || x === 15 || y === 15) {
+      onGameOver();
     }
   });
-  const move = useCallback(([y, x]) => {
-    if (x && y) {
-      switch (direction) {
-        case "up":
-          return [y - 1, x];
-        case "down":
-          return [y + 1, x];
-        case "right":
-          return [y, x + 1];
-        case "left":
-          return [y, x - 1];
-        default:
-          return [y, x];
-      }
-    } else {
-      onGameOver();
-      return [y, x];
-    }
-  }, []);
+
   useEffect(() => {
-    const moment = setInterval(() => {
+    const [y, x] = snake.head.data;
+    if (food[0] === y && food[1] === x) {
+      const [row, col] = getNewHead(direction, snake.head.data);
+      setScore((score) => score + 5);
+      snake.addToHead([row, col]);
+      setFood(getRandomFood(snake));
+    }
+  });
+
+  useEffect(() => {
+    const momentId = setInterval(() => {
       setSnake((state) => {
-        state.addToHead(move(state.head.data));
-        state.removeLast();
+        const [row, col] = getNewHead(direction, state.head.data);
+        state.addToHead([row, col]);
+        state.removeTail();
         return state;
       });
-    }, 1000);
-    return () => clearInterval(moment);
-  }, []);
-  console.log(direction);
+      setScore((score) => score + 1);
+    }, timer);
+    return () => clearInterval(momentId);
+  }, [direction, setScore, timer]);
 
-  const isSnakeCell = (rIndex, cIndex) => {
-    return snake.contains([rIndex, cIndex]);
-  };
   for (let rIndex = 0; rIndex < MATRIX_SIZE; rIndex++) {
     let columns = [];
     for (let cIndex = 0; cIndex < MATRIX_SIZE; cIndex++) {
       columns.push(
         <div
           key={cIndex}
-          className={cn("cell", { snake: isSnakeCell(rIndex, cIndex) })}
+          className={cn(
+            "cell",
+            { snake: isSnakeCell(rIndex, cIndex, snake) },
+            { food: isFoodCell(rIndex, cIndex, food) }
+          )}
         />
       );
     }
