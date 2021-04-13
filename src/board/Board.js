@@ -22,7 +22,7 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
   useSnakeDirection();
   const { direction } = useContext(DirectionContext);
   useEffect(() => {
-    if (score % 101 === 0) {
+    if (score % 101 === 0 && score !== 0) {
       setLevel((level) => level + 1);
       setTimer((timer) => timer / 2);
     }

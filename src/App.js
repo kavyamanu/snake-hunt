@@ -9,7 +9,7 @@ import { DirectionProvider } from "./context/DirectionProvider";
 function App() {
   const [isOut, setIsOut] = useState(false);
   const [score, setScore] = useState(0);
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState(1);
   const [intro, setIntro] = useState(false);
 
   return (

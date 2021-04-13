@@ -49,8 +49,8 @@ export function Score({
         className="out repeat"
         onClick={() => {
           setIsOut(false);
+          setLevel(1);
           setScore(0);
-          setLevel(0);
           setDirection("down")
         }}
       >
