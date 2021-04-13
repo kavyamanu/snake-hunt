@@ -1,7 +1,5 @@
 .joy{
-  display: flex;
-  flex-direction: row;
-  padding: 2.5rem;
+  display: none;
 }
 .score {
   border: 1px solid whitesmoke;
@@ -46,6 +44,8 @@ hr {
 .repeat {
   font-size: 6vh;
   cursor: pointer;
+  flex-direction: row;
+  justify-content: center;
   text-shadow: 1px 1px 1px rgb(219, 216, 216);
 }
 .help {
@@ -78,5 +78,12 @@ hr {
     width: 0rem;
     margin: -1rem;
   }
-
+  .joy{
+  display:unset;
+}
+.joy-score{
+  display: flex;
+  flex-direction: row;
+  padding: 2.5rem;
+}
 }

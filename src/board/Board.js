@@ -1,9 +1,10 @@
 import cn from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useSnakeDirection } from "../hooks/useSnakeDirection";
 import { isFoodCell, isSnakeCell, getRandomFood, getNewHead } from "../utils";
 import "./board.css";
 import { LinkedList } from "./linkedList";
+import { DirectionContext } from "../context/DirectionProvider";
 
 export function Board({ onGameOver, setScore, score, setLevel }) {
   let board = [];
@@ -18,8 +19,8 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
   });
   const [food, setFood] = useState(getRandomFood(snake));
   const [timer, setTimer] = useState(1500);
-  const direction = useSnakeDirection();
-
+  useSnakeDirection();
+  const { direction } = useContext(DirectionContext);
   useEffect(() => {
     if (score % 101 === 0) {
       setLevel((level) => level + 1);

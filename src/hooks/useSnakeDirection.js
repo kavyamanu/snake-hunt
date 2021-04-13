@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { DirectionContext } from "../context/DirectionProvider";
 
 export function useSnakeDirection() {
-  const [direction, setDirection] = useState("down");
-
+  const { setDirection } = useContext(DirectionContext);
   useEffect(() => {
     const onKeyDown = (event) => {
       switch (event.key) {
@@ -28,5 +28,4 @@ export function useSnakeDirection() {
       document.removeEventListener("keydown", onKeyDown);
     };
   }, []);
-  return direction;
 }
