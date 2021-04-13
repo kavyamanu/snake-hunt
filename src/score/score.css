@@ -1,3 +1,8 @@
+.joy{
+  display: flex;
+  flex-direction: row;
+  padding: 2.5rem;
+}
 .score {
   border: 1px solid whitesmoke;
   width: 15rem;
@@ -54,7 +59,7 @@ hr {
 @media screen and (max-width: 480px) {
   .score {
     padding: 0rem;
-    margin: 1.5rem;
+    margin-right: 2rem;
     width: 10rem;
     height: 5rem;
     border-radius: 1.5rem;
@@ -73,4 +78,5 @@ hr {
     width: 0rem;
     margin: -1rem;
   }
+
 }

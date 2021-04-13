@@ -9,12 +9,13 @@ function App() {
   const [isOut, setIsOut] = useState(false);
   const [score, setScore] = useState(0);
   const [level, setLevel] = useState(0);
-  const [intro, setIntro] = useState(false)
+  const [intro, setIntro] = useState(false);
+  
   return (
     <div className="app">
       {!isOut ? (
         <div className="title">
-          Snake Hunt <img className= "snake-img" src="snake.png" alt="snake"/>
+          Snake Hunt <img className="snake-img" src="snake.png" alt="snake" />
         </div>
       ) : (
         <div className="title">Snake Hunt</div>
@@ -27,6 +28,7 @@ function App() {
             setScore={setScore}
             setLevel={setLevel}
           />
+          
         )}
         {!intro ? (
           <Score
@@ -39,8 +41,9 @@ function App() {
             setIntro={setIntro}
           />
         ) : (
-            <Intro setIntro={setIntro}/>
+          <Intro setIntro={setIntro} />
         )}
+        
       </div>
     </div>
   );
