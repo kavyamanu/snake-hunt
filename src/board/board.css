@@ -25,3 +25,9 @@
   background-color: teal;
   box-shadow: 0 0 10px white;
 }
+@media screen and (max-width: 480px) {
+  .cell {
+    height: 1.5rem;
+    width: 1.2rem;
+  }
+}

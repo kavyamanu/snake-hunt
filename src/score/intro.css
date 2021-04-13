@@ -13,3 +13,9 @@
   cursor: pointer;
   text-shadow: 1px 1px 1px rgb(240, 243, 49);
 }
+@media screen and (max-width: 480px) {
+  .intro {
+    font-size: 18px;
+    margin: 0px;
+  }
+}

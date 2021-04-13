@@ -1,7 +1,15 @@
 import "./score.css";
 import { useState, useEffect } from "react";
 
-export function Score({ isOut, score, setIsOut, setScore, level, setLevel, setIntro }) {
+export function Score({
+  isOut,
+  score,
+  setIsOut,
+  setScore,
+  level,
+  setLevel,
+  setIntro,
+}) {
   const [bestScore, setBestScore] = useState(0);
 
   useEffect(() => {
@@ -29,7 +37,7 @@ export function Score({ isOut, score, setIsOut, setScore, level, setLevel, setIn
         <img src="repeat-button.png" alt="repeat" width="40" height="30" />
       </div>
       <p>
-        Your Score : {score - 1}
+        Your Score : {score}
         <br></br>Best Score: {bestScore}
       </p>
       <div className="out">

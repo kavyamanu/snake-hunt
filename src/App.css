@@ -19,8 +19,26 @@
 }
 .title {
   font-size: 4rem;
-  font-style: bold;
   text-shadow: 1px 1px 1px rgb(240, 243, 49);
   text-align: center;
   margin: 1.5rem;
+}
+.snake-img{
+    width: auto;
+    height: 50px;
+  }
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+    margin: 5px;
+  }
+  .snake-img{
+    width: auto;
+    height: 25px;
+  }
+  .game {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 }

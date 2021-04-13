@@ -14,7 +14,7 @@ function App() {
     <div className="app">
       {!isOut ? (
         <div className="title">
-          Snake Hunt <img src="snake.png" alt="snake" width="70" height="50" />
+          Snake Hunt <img className= "snake-img" src="snake.png" alt="snake"/>
         </div>
       ) : (
         <div className="title">Snake Hunt</div>

@@ -25,7 +25,7 @@ p {
   text-shadow: 1.5px 1.5px 1.5px black;
   line-height: 5vh;
 }
-hr{
+hr {
   width: 17rem;
   margin: -1.1rem;
 }
@@ -43,10 +43,34 @@ hr{
   cursor: pointer;
   text-shadow: 1px 1px 1px rgb(219, 216, 216);
 }
-.help{
+.help {
   font-size: 20px;
   cursor: pointer;
   color: whitesmoke;
   text-decoration: none;
   text-shadow: 1.5px 1.5px 1.5px black;
+}
+
+@media screen and (max-width: 480px) {
+  .score {
+    padding: 0rem;
+    margin: 1.5rem;
+    width: 10rem;
+    height: 5rem;
+    border-radius: 1.5rem;
+  }
+  h2 {
+    font-size: 0px;
+    padding-top: 0px;
+  }
+  p {
+    font-size: 18px;
+    color: whitesmoke;
+    text-shadow: 1.5px 1.5px 1.5px black;
+    line-height: 3vh;
+  }
+  hr {
+    width: 0rem;
+    margin: -1rem;
+  }
 }
