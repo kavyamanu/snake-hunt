@@ -41,6 +41,7 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
     }
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const [y, x] = snake.head.data;
     if (food[0] === y && food[1] === x) {

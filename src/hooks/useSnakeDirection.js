@@ -27,5 +27,6 @@ export function useSnakeDirection() {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }
