@@ -51,6 +51,7 @@ export function Score({
           setIsOut(false);
           setScore(0);
           setLevel(0);
+          setDirection("down")
         }}
       >
         Hunt Again 
