@@ -81,7 +81,7 @@ export function Score({
       </div>
       <div className="joy">
         <Joystick
-          size={80}
+          size={100}
           baseColor="rgb(130, 136, 136)"
           stickColor="whitesmoke"
           move={handleMove}
