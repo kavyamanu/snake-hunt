@@ -86,4 +86,7 @@ hr {
   flex-direction: row;
   padding: 2.5rem;
 }
+.out {
+  font-size: 6vh;
+}
 }

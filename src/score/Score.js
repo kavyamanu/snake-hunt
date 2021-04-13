@@ -54,7 +54,7 @@ export function Score({
           setDirection("down")
         }}
       >
-        Hunt Again 
+          Hunt Again 
         <img src="repeat-button.png" alt="repeat" width="40" height="30" style={{paddingTop:20, paddingLeft:10}} />
       </div>
       <p>
