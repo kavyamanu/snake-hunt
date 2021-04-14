@@ -21,6 +21,14 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
   const [timer, setTimer] = useState(1500);
   useSnakeDirection();
   const { direction } = useContext(DirectionContext);
+  function playAte() {
+    var audio = document.getElementById("audioFood");
+    audio.play();
+  }
+   function playOver() {
+     var audio = document.getElementById("audioOver");
+     audio.play();
+   }
   useEffect(() => {
     if (score % 101 === 0 && score !== 0) {
       setLevel((level) => level + 1);
@@ -38,6 +46,7 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
       snake.isBody(snake.head.data)
     ) {
       onGameOver();
+      playOver();
     }
   });
 
@@ -47,6 +56,7 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
     if (food[0] === y && food[1] === x) {
       const [row, col] = getNewHead(direction, snake.head.data);
       setScore((score) => score + 5);
+      playAte();
       snake.addToHead([row, col]);
       setFood(getRandomFood(snake));
     }
@@ -87,5 +97,9 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
     board.push(row);
   }
 
-  return <div className="board">{board}</div>;
+  return (
+    <div className="board">
+      {board} 
+    </div>
+  );
 }
