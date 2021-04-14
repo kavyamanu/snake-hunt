@@ -6,6 +6,7 @@
   width: 15rem;
   text-align: center;
   padding: 1rem;
+  color: white;
   box-shadow: 0 0 10px whitesmoke;
   border-radius: 0.5rem;
 }
@@ -60,8 +61,8 @@ hr {
   .score {
     padding: 0rem;
     margin-right: 2rem;
-    width: calc(100vh - 75vh);;
-    height: calc(100vh - 85vh);
+    width: calc(100vh - 78vh);;
+    height: calc(100vh - 87vh);
     border-radius: 1.5rem;
   }
   h2 {
