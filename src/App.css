@@ -29,7 +29,7 @@
   }
 @media screen and (max-width: 480px) {
   .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 5px;
   }
   .snake-img{

@@ -27,7 +27,7 @@
 }
 @media screen and (max-width: 480px) {
   .cell {
-    height: 1.8rem;
-    width: 1.5rem;
+    height: 1.5rem;
+    width: 1rem;
   }
 }
