@@ -16,7 +16,7 @@
   border-radius: 2px;
 }
 
-.food{
+.food {
   background-color: rgb(240, 243, 49);
   box-shadow: 0 0 10px white;
 }
@@ -27,7 +27,7 @@
 }
 @media screen and (max-width: 480px) {
   .cell {
-    height: 1.5rem;
-    width: 1rem;
+    height: calc((100vh - 50vh) / 15);
+    width: calc((100vw - 20vw) / 15);
   }
 }
