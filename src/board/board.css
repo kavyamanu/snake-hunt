@@ -19,6 +19,7 @@
 .food {
   background-color: rgb(240, 243, 49);
   box-shadow: 0 0 10px white;
+  transition: all 1s
 }
 
 .snake {
