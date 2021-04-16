@@ -19,14 +19,14 @@ export function Board({ onGameOver, setScore, score, setLevel }) {
     return list;
   });
   const [food, setFood] = useState(getRandomFood(snake));
-  const [timer, setTimer] = useState(1500);
+  const [timer, setTimer] = useState(800);
   useSnakeDirection();
   const { direction } = useContext(DirectionContext);
 
   useEffect(() => {
     if (score % 101 === 0 && score !== 0) {
       setLevel((level) => level + 1);
-      setTimer((timer) => timer / 2);
+      setTimer((timer) => (timer * 3) / 4);
     }
   }, [score, setLevel, setScore]);
 

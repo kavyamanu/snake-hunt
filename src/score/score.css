@@ -55,7 +55,9 @@ hr {
   text-decoration: none;
   text-shadow: 1.5px 1.5px 1.5px black;
 }
-
+.scale{
+  transform: scale(1.5);
+}
 @media screen and (max-width: 480px) {
   .score {
     padding: 0rem;
